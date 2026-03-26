@@ -8,6 +8,8 @@ package util;
  *
  * @author truon
  */
+
+//Tạm thời để lại file này
 public class HashUtil {
     
 }

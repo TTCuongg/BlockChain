@@ -11,7 +11,7 @@ import blockchain.BlockChain;
  */
 public class BlockchainService {
 
-    private BlockChain blockchain = new Blockchain();
+    private BlockChain blockchain = new BlockChain();
 
     public void saveHash(String hash) {
         blockchain.addBlock(hash);
