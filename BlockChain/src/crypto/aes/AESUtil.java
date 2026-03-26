@@ -5,6 +5,7 @@
 package crypto.aes;
 
 import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 
@@ -21,15 +22,41 @@ public class AESUtil {
     }
 
     public static byte[] encrypt(byte[] data, SecretKey key) throws Exception {
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        return cipher.doFinal(data);
+
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+        byte[] iv = new byte[16];
+        new SecureRandom().nextBytes(iv);
+
+        IvParameterSpec ivSpec = new IvParameterSpec(iv);
+
+        cipher.init(Cipher.ENCRYPT_MODE, key, ivSpec);
+
+        byte[] encrypted = cipher.doFinal(data);
+
+        // Ghép IV + data
+        byte[] result = new byte[iv.length + encrypted.length];
+        System.arraycopy(iv, 0, result, 0, iv.length);
+        System.arraycopy(encrypted, 0, result, iv.length, encrypted.length);
+
+        return result;
     }
 
-    public static byte[] decrypt(byte[] data, SecretKey key) throws Exception {
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        return cipher.doFinal(data);
+    public static byte[] decrypt(byte[] encryptedData, SecretKey key) throws Exception {
+
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+        byte[] iv = new byte[16];
+        System.arraycopy(encryptedData, 0, iv, 0, 16);
+
+        IvParameterSpec ivSpec = new IvParameterSpec(iv);
+
+        cipher.init(Cipher.DECRYPT_MODE, key, ivSpec);
+
+        byte[] actualData = new byte[encryptedData.length - 16];
+        System.arraycopy(encryptedData, 16, actualData, 0, actualData.length);
+
+        return cipher.doFinal(actualData);
     }
 
     public static SecretKey fromBytes(byte[] keyBytes) {

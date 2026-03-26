@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/crypto/rsa/RSAUtil.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/blockchain/BlockChain.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/crypto/aes/AESUtil.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/config/AppConfig.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/util/HashUtil.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/main/MainApp.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/service/KeyService.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/model/FileMetadata.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/service/BlockchainService.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/blockchain/Block.java</file>
+            <file>file:/D:/LapTrinh/BlockChain/BlockChain/src/service/CryptoService.java</file>
+        </group>
+    </open-files>
+</project-private>

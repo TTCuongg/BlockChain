@@ -9,6 +9,7 @@ package blockchain;
  * @author truon
  */
 public class Block {
+    public String fileName;     // NEW
     public String previousHash;
     public String dataHash;
     public long timestamp;
