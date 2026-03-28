@@ -1,6 +1,7 @@
 package main;
 
 import service.*;
+import java.util.Scanner;
 
 public class MainApp {
 
@@ -13,23 +14,36 @@ public class MainApp {
 
         CryptoService crypto = new CryptoService(keyService, blockchainService);
 
-        // ===== MODE =====
-        boolean DO_ENCRYPT = false;
+        Scanner sc = new Scanner(System.in);
 
-        if (DO_ENCRYPT) {
-            crypto.encryptFile(
-                    "data/input/test.txt",
-                    "data/encrypted/test.enc",
-                    "data/keys/test.key"
-            );
+        System.out.println("===== SYSTEM MENU =====");
+        System.out.println("1. Encrypt file");
+        System.out.println("2. Decrypt file");
+        System.out.print("Choose: ");
+
+        int choice = sc.nextInt();
+
+        switch (choice) {
+
+            case 1:
+                crypto.encryptFile(
+                        "data/input/test.txt",
+                        "data/encrypted/test.enc",
+                        "data/keys/test.key"
+                );
+                break;
+
+            case 2:
+                byte[] decrypted = crypto.decryptFile(
+                        "data/encrypted/test.enc",
+                        "data/keys/test.key"
+                );
+                System.out.println("Decrypted: " + new String(decrypted));
+                break;
+
+            default:
+                System.out.println("Invalid choice!");
         }
-
-        byte[] decrypted = crypto.decryptFile(
-                "data/encrypted/test.enc",
-                "data/keys/test.key"
-        );
-
-        System.out.println("Decrypted: " + new String(decrypted));
 
         System.out.println("Blockchain valid: " + blockchainService.verifyChain());
     }
