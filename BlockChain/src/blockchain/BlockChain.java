@@ -46,15 +46,14 @@ public class BlockChain {
         return true;
     }
 
-    public Block findByFileName(String fileName) {
-        for (Block b : chain) {
-            if (b.fileName.equals(fileName)) {
-                return b;
+    public Block findLatestByFileName(String fileName) {
+        for (int i = chain.size() - 1; i >= 0; i--) {
+            if (chain.get(i).fileName.equals(fileName)) {
+                return chain.get(i);
             }
         }
         return null;
     }
-
     public List<Block> getChain() {
         return chain;
     }

@@ -27,11 +27,11 @@ public class BlockchainService {
     }
 
     public boolean verifyFile(String fileName, String currentHash) {
-        Block block = blockchain.findByFileName(fileName);
+    Block block = blockchain.findLatestByFileName(fileName);
 
-        if (block == null) return false;
+    if (block == null) return false;
 
-        return block.dataHash.equals(currentHash);
+    return block.dataHash.equals(currentHash);
     }
 
     private void saveToFile() throws Exception {
